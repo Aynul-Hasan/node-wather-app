@@ -1,0 +1,148 @@
+*{
+    margin: 0;
+    padding: 0;
+   
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card{ 
+    width: 300px;
+    height: 70vh;
+    background-color: rgba(82, 101, 117, 0.863);
+    margin: auto auto;
+    position: relative;
+    overflow: hidden;
+}
+.wave-1{
+    height: 400px;
+    width: 400px;
+    background-color: rgba(240, 248, 255, 0.322);
+    border-radius: 48%;
+    position: absolute;
+    bottom:-29%;
+    left: -15%;
+    animation: sqr 7s infinite ;
+   
+}
+.wave-2{
+    height: 400px;
+    width: 400px;
+    background-color: rgba(240, 248, 255, 0.171);
+    border-radius: 45%;
+    position: absolute;
+    bottom:-31%;
+    left: -13%;
+    animation: sqr 10s infinite ;
+    animation-delay: 1s;
+   
+}
+.wave-3{
+    height: 400px;
+    width: 400px;
+    background-color: rgba(240, 248, 255, 0.233);
+    border-radius: 45%;
+    position: absolute;
+    bottom:-29%;
+    left: -18%;
+    animation: sqr 10s  infinite;
+    animation-delay: 1.5s;
+    
+   
+}
+
+
+
+@keyframes sqr {
+    0%{
+        transform: rotate(00deg);
+        transition: ease;
+    }
+    10%{
+        transform: rotate(-035deg);
+    }
+    20%{
+        transform: rotate(-70deg);
+    }
+    30%{
+        transform: rotate(-105deg);
+    }
+    40%{
+        transform: rotate(-140deg);
+    }
+   50%{
+        transform: rotate(-175deg);
+    }
+    60%{
+        transform: rotate(-210deg);
+    }
+     70%{
+        transform: rotate(-245deg);
+    }
+     80%{
+        transform: rotate(-280deg);
+    }
+    90%{
+        transform: rotate(-315deg);
+    }
+    100%{
+        transform: rotate(-360deg);
+    }
+}
+.weathericon{
+    margin-top: 50px;
+    text-align: center; 
+    
+
+}
+.weathericon i{
+    color: rgb(255, 208, 0);
+    animation: sun 4s linear infinite alternate;
+
+}
+@keyframes sun {
+   0%{
+       transform: scale(.8rem);
+   }
+   100%{
+       transform: scale(1.2);
+   }
+}
+.info{
+    position: absolute;
+    bottom:10%;
+}
+.lc{
+    margin:  20px 0 0 0;
+    display: flex;
+    justify-content: space-between;
+}
+.lc i{
+    margin-left: 10px;
+    animation: man 5s linear infinite alternate;
+}
+@keyframes man {
+    from{
+        transform: translateX(.5rem);
+    }
+    to{
+        transform: translateX(3.5rem);
+    }
+    
+}
+.lc h2{
+    margin-left: 1rem ;
+}
+#deta{
+    text-align: center;
+
+}
+.temp{
+    margin-top: 2.5rem;
+    text-align: center;
+}
+.max-min{
+    text-align: center;
+}

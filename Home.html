@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>WatherAPP</title>
+   <style>
+       *{
+    margin: 0;
+    padding: 0;
+   
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card{ 
+    width: 300px;
+    height: 70vh;
+    background-color: rgba(82, 101, 117, 0.863);
+    margin: auto auto;
+    position: relative;
+    overflow: hidden;
+}
+.wave-1{
+    height: 400px;
+    width: 400px;
+    background-color: rgba(240, 248, 255, 0.322);
+    border-radius: 48%;
+    position: absolute;
+    bottom:-29%;
+    left: -15%;
+    animation: sqr 7s infinite ;
+   
+}
+.wave-2{
+    height: 400px;
+    width: 400px;
+    background-color: rgba(240, 248, 255, 0.171);
+    border-radius: 45%;
+    position: absolute;
+    bottom:-31%;
+    left: -13%;
+    animation: sqr 10s infinite ;
+    animation-delay: 1s;
+   
+}
+.wave-3{
+    height: 400px;
+    width: 400px;
+    background-color: rgba(240, 248, 255, 0.233);
+    border-radius: 45%;
+    position: absolute;
+    bottom:-29%;
+    left: -18%;
+    animation: sqr 10s  infinite;
+    animation-delay: 1.5s;
+    
+   
+}
+
+
+
+@keyframes sqr {
+    0%{
+        transform: rotate(00deg);
+        transition: ease;
+    }
+    10%{
+        transform: rotate(-035deg);
+    }
+    20%{
+        transform: rotate(-70deg);
+    }
+    30%{
+        transform: rotate(-105deg);
+    }
+    40%{
+        transform: rotate(-140deg);
+    }
+   50%{
+        transform: rotate(-175deg);
+    }
+    60%{
+        transform: rotate(-210deg);
+    }
+     70%{
+        transform: rotate(-245deg);
+    }
+     80%{
+        transform: rotate(-280deg);
+    }
+    90%{
+        transform: rotate(-315deg);
+    }
+    100%{
+        transform: rotate(-360deg);
+    }
+}
+#weathericon{
+    margin-top: 50px;
+    text-align: center; 
+    
+
+}
+#weathericon i{
+    color: rgb(255, 208, 0);
+    animation: sun 4s linear infinite alternate;
+
+}
+@keyframes sun {
+   0%{
+       transform: scale(.8rem);
+   }
+   100%{
+       transform: scale(1.2);
+   }
+}
+.info{
+    position: absolute;
+    bottom:10%;
+}
+.lc{
+    margin:  20px 0 0 0;
+    display: flex;
+    justify-content: space-between;
+}
+.lc i{
+    margin-left: 10px;
+    animation: man 5s linear infinite alternate;
+}
+@keyframes man {
+    from{
+        transform: translateX(.5rem);
+    }
+    to{
+        transform: translateX(3.5rem);
+    }
+    
+}
+.lc h2{
+    margin-left: 5rem ;
+}
+#deta{
+    text-align: center;
+
+}
+.temp{
+    margin-top: 2.5rem;
+    text-align: center;
+}
+.max-min{
+    text-align: center;
+}
+   </style>
+</head>
+<body>
+      <div class="card">
+          <div class="wave-1"></div>
+          <div class="wave-2"></div>
+          <div class="wave-3"></div>
+          <div id="weathericon">
+            <i class="fas fa-sun fa-3x" ></i>
+          </div>
+
+          <div class="info">
+             <div class="lc">
+                <i class="fas fa-street-view fa-2x"></i>
+                <h2 class="loction">{%location%},{%country%}</h2>
+             </div>
+              <p id="deta">FRI|JUNE 25|8:10PM</p>
+              <h1 class="temp">{%tempval%} &deg; </h1>
+              <h3 class="max-min">{%minval%}&deg; C| {%maxval%} &deg; C</h3>
+          </div>
+      </div>
+      <script>
+          let curDate= document.getElementById('deta')
+          let watherCon= document.getElementById('weathericon');
+
+
+          const temStatus= '{%temstatus%}';
+
+          if(temStatus=='Sunny'){
+           //watherCon.innerHTML='
+           watherCon.innerHTML='<i class="fas fa-sun fa-3x" ></i>'
+          }else if(temStatus=='Clouds'){
+              watherCon.innerHTML= '<i class="fas fa-cloud fa-3x" color="#fcfcfc"></i>'
+          }else if(temStatus=='Rain'){
+              watherCon.innerHTML='<i class="fas fa-cloud-rain fa-3x" color="#808080"></i>'
+          }else{
+              watherCon.innerHTML='<i class="fas fa-sun fa-3x"></i>'
+          }
+
+          const getCurrentDay=()=>{
+                let weekday=['Sun', 'Mon', 'Tue' ,' Wed' ,'Thu' , 'Fri' ,'Sat']
+
+              let currentTime= new Date();
+             let day=weekday[currentTime.getDay()]
+             return day;
+
+
+          }
+          const getCurrentTime=()=>{
+            const months = ["January", "February", "March", "April", "May", "June",
+             "July", "August", "September", "October", "November", "December"];
+             let now= new Date();
+             let month= months[now.getMonth()]
+             let day = now.getDate();
+             let hour =now.getHours();
+             let mins = now.getMinutes();
+             let secound =now.getSeconds();
+
+             let perios= 'AM';
+
+             if(hour>11){
+                 perios='PM';
+                 if(hour>12)hour-=12;
+             }
+             if(mins<10){
+                 mins="0"+mins;
+             }
+            return month + " " +  day +" | "+ hour + ":"+ mins + ":" + secound + perios ;
+            }
+            
+           // curDate.innerHTML=getCurrentDay()+ " | " + getCurrentTime();
+           // console.log(curDate);
+           curDate.innerHTML = getCurrentDay()+ " | " + getCurrentTime();
+            
+            </script>
+</body>
+</html>
